@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tms29"
+version = "0.1.0"
+description = "TMS 29 / IAS 29 hyperinflation restatement impact on BIST energy sector ratios"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Berat Yılmaz" }]
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "scipy>=1.11",
+]
+
+# openpyxl yalnızca kaynak Excel'i yeniden çıkarırken gerekli;
+# dondurulmuş veri onsuz okunur (bkz. veri.py).
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "ruff>=0.6", "openpyxl>=3.1", "matplotlib>=3.8"]
+notebook = ["matplotlib>=3.8", "jupyter>=1.0", "nbconvert>=7.0", "openpyxl>=3.1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tms29"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+line-length = 88
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "NPY"]

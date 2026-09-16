@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+data/cache/
+
+# Kullanıcının indirdiği ham CSV; depoya giren sürümü data/portfolio_prices.csv.gz
+data/prices.csv
+
+# sanal ortamlar
+.venv/
+venv/
+env/
+
+# notebook kontrol noktaları
+.ipynb_checkpoints/
+
+# editör
+.vscode/
+.idea/
+.DS_Store
